@@ -1,0 +1,143 @@
+@import-sanitize;
+@import-sanitize 'sanitize.css/typography';
+@import-sanitize 'sanitize.css/forms';
+
+/* Set core root defaults */
+html {
+  color: var(--global-dark-800-color);
+  font-size: 16px;
+  font-family: 'Open-sans', Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  margin: 0;
+  padding: 0;
+}
+
+/* Blur images when they have no alt attribute */
+img:not([alt]) {
+  filter: blur(10px);
+}
+
+img {
+  width: auto;
+  height: 100%;
+}
+
+/* Set transition to all links */
+a,
+a:link,
+a:active,
+a:visited {
+  transition: all 0.3s ease-in-out;
+}
+
+#app {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #eeeeee;
+}
+
+.card {
+  color: var(--global-grey-900-color);
+  line-height: 1;
+  background-color: var(--global-white-900-color);
+  box-shadow: 0 1px 3px rgba(#000000, 0.3);
+}
+
+.card__header {
+  font-size: 18px;
+}
+
+.header-wrapper {
+  padding: 11px 14px;
+}
+
+.header__summary {
+  float: right;
+}
+
+.card-list,
+.card-list ul {
+  list-style: none;
+}
+
+.card-list {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  @util margin(60px, 0, 60px, 0);
+}
+
+.card-list > * + * {
+  margin-top: 6px;
+}
+
+.row__wrapper {
+  @util padding(null, 60px, null, 36px);
+}
+
+.row__header {
+  @util padding(16px, null, 0px, null);
+}
+
+.row-content__header {
+  padding-top: 16px;
+  padding-bottom: 22px;
+}
+
+.row__price {
+  float: right;
+}
+
+.product-list {
+  @util padding(null, 20px, 22px, 20px);
+}
+
+.product-list > * + * {
+  margin-top: 12px;
+}
+
+.product-list__item {
+  display: flex;
+}
+
+.product__image-wrapper {
+  flex-shrink: 0;
+  width: 65px;
+  height: 65px;
+  margin-right: 17px;
+  overflow: hidden;
+  border: 1px solid var(--global-grey-500-color);
+}
+
+.product__info {
+  width: 100%;
+  color: var(--global-dark-900-color);
+  font-weight: 500;
+}
+
+.product__name {
+  font-weight: 600;
+  @util margin(0, null, 18px, null);
+}
+
+.product__numbers {
+  display: flex;
+  font-size: 21px;
+  @util margin(0, null, 0, null);
+}
+
+.product__price {
+  float: right;
+  margin-left: auto;
+}
+
+
