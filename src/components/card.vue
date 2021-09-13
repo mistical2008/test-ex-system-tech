@@ -1,6 +1,9 @@
 <template>
   <li class="card">
-    <header class="card__header icon icon_s icon_corner-down">
+    <header 
+      @click="toggleRows()"
+      class="card__header icon icon_s icon_corner-down"
+    >
       <div class="header-wrapper">
         <span class="header__date">{{ day + "&nbsp;" }}</span>
         <span class="header__summary"
@@ -10,7 +13,7 @@
     </header>
 
     <template v-for="(transaction, id) in transactions" :key="id">
-      <CardRow :transaction="transaction" :id="id" />
+      <CardRow v-show="showRows" :transaction="transaction" :id="id" />
     </template>
 
   </li>
@@ -26,6 +29,12 @@
       CardRow,
     },
 
+    data() {
+      return {
+        showRows: false,
+      }
+    },
+
     created() {
       this.sum = this.calcDaySummary().toFixed(2);
       this.transactions = this.groupByTransactions();
@@ -33,6 +42,11 @@
     },
 
     methods: {
+
+      toggleRows() {
+        this.showRows = !this.showRows;
+      },
+
       calcDaySummary() {
         const res = this.operations.reduce((sum, op) => {
           switch (op.name) {
