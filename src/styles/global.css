@@ -88,6 +88,10 @@ a:visited {
   margin-top: 6px;
 }
 
+.card__row + .card__row {
+  box-shadow: 0 -1px 0 var(--global-grey-900-color);
+}
+
 .row__wrapper {
   @util padding(null, 60px, null, 36px);
 }
