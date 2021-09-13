@@ -1,10 +1,10 @@
 <template>
   <li class="card">
-    <header class="card__header">
+    <header class="card__header icon icon_s icon_corner-down">
       <div class="header-wrapper">
         <span class="header__date">{{ day + "&nbsp;" }}</span>
         <span class="header__summary"
-          >Документов: ({{sum}}руб.)</span
+          >Документов: ({{sum}}₽)</span
         >
       </div>
     </header>
@@ -24,11 +24,6 @@
     props: ["operations", "day"],
     components: {
       CardRow,
-    },
-
-    data() {
-      sum: 0;
-      transactions: null;
     },
 
     created() {

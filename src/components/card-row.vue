@@ -5,10 +5,10 @@
         <span class="row__meta"
           >{{ transaction[0].name + "&nbsp;" }} №{{id}}</span
         >
-        <span class="row__price">{{calcTotal + "&nbsp;"}} руб.</span>
+        <span class="row__price">{{calcTotal + "&nbsp;"}} ₽</span>
       </header>
       <div class="row__content row-content">
-        <div class="row-content__header">Товаров: {{productsTotalQty}}</div>
+        <div class="row-content__header icon icon_triangle-down">Товаров: {{productsTotalQty}}</div>
         <ProductsList :products="transaction" />
       </div>
     </div>

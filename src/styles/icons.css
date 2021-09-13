@@ -1,0 +1,92 @@
+/* $space-s: 8px;
+$space-m: 12px; */
+
+.icon {
+  position: relative;
+  z-index: 0;
+}
+
+.icon::before {
+  position: absolute;
+  /* @util center; */
+  z-index: 1;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  content: '';
+}
+
+.icon_left-s {
+  padding-left: 16px;
+}
+
+.icon_left-s::before {
+  top: 50%;
+  left: 8px;
+  transform: translate(0, -50%);
+}
+
+.icon_left-m {
+  padding-left: 20px;
+}
+
+.icon_left-m::before {
+  top: 50%;
+  left: 12px;
+  transform: translate(0, -50%);
+}
+
+.icon_left-l {
+  padding-left: 26px;
+}
+
+.icon_left-l::before {
+  top: 50%;
+  left: 8px;
+  transform: translate(0, -50%);
+}
+
+.icon_s::before {
+  @util size(6px);
+}
+
+.icon_xs::before {
+  @util size(8px);
+}
+
+.icon_m::before {
+  @util size(10px);
+}
+
+.icon_xm::before {
+  @util size(12px);
+}
+
+.icon_l::before {
+  @util size(14px);
+}
+
+.icon_xl::before {
+  @util size(16px);
+}
+
+.icon_triangle-up::before {
+  @util triangle(5px, var(--global-dark-900-color), up);
+}
+
+.icon_triangle-down::before {
+  @util triangle(5px, var(--global-dark-900-color), down);
+}
+
+.icon_corner-down::before {
+  border-bottom: 2px solid var(--global-dark-900-color);
+  border-left: 2px solid var(--global-dark-900-color);
+  transform: translate(0, -50%) rotate(-45deg);
+}
+
+.icon_corner-up::before {
+  border-bottom: 2px solid var(--global-dark-900-color);
+  border-left: 2px solid var(--global-dark-900-color);
+  transform: translate(0, -50%) rotate(135deg);
+}
+
