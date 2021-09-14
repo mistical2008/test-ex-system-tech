@@ -13,7 +13,9 @@
     </header>
 
     <template v-for="(transaction, id) in transactions" :key="id">
-      <CardRow v-show="showRows" :transaction="transaction" :id="id" />
+      <transition appear name="slide-fade">
+        <CardRow v-show="showRows" :transaction="transaction" :id="id" />
+      </transition>
     </template>
 
   </li>
