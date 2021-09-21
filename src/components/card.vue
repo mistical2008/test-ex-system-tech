@@ -2,10 +2,10 @@
   <li class="card">
     <header 
       @click="toggleRows()"
-      class="card__header icon icon_s icon_corner-down"
+      :class="[ 'card__header', 'icon', 'icon_s', cornerClass ]"
     >
       <div class="header-wrapper">
-        <span class="header__date">{{ day + "&nbsp;" }}</span>
+        <span class="header__date">{{ nativeDate + "&nbsp;" }}</span>
         <span class="header__summary"
           >Документов: ({{sum}}₽)</span
         >
@@ -23,10 +23,11 @@
 
 <script>
   import CardRow from "./card-row.vue";
+  import { formatDateNative } from "../utils/date.js";
 
   export default {
     name: "Card",
-    props: ["operations", "day"],
+    props: ["operations", "date"],
     components: {
       CardRow,
     },
@@ -37,10 +38,20 @@
       }
     },
 
+    computed: {
+      nativeDate() {
+        return formatDateNative(this.date);
+      },
+
+      cornerClass() {
+        return `icon_corner-${ this.showRows ? 'up' : 'down' }`
+      }
+
+    },
+
     created() {
       this.sum = this.calcDaySummary().toFixed(2);
       this.transactions = this.groupByTransactions();
-      console.log(this.transactions);
     },
 
     methods: {
@@ -51,7 +62,7 @@
 
       calcDaySummary() {
         const res = this.operations.reduce((sum, op) => {
-          switch (op.name) {
+          switch (op.doctype) {
             case 'Расчет':
               return sum - (op.price * op.quantity);
             
@@ -67,7 +78,8 @@
       },
 
       groupByTransactions() {
-        const res = this.operations.reduce((prev, curr) => {
+        const res = this.operations
+          .reduce((prev, curr) => {
           const {id} = curr;
 
           if(!prev[id]) {

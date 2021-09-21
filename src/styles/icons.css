@@ -78,6 +78,12 @@ $space-m: 12px; */
   @util triangle(5px, var(--global-dark-900-color), down);
 }
 
+.icon_corner-down::before,
+.icon_corner-up::before {
+  transition: transform 0.3s ease-in-out;
+}
+
+
 .icon_corner-down::before {
   border-bottom: 2px solid var(--global-dark-900-color);
   border-left: 2px solid var(--global-dark-900-color);
