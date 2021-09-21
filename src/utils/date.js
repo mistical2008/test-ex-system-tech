@@ -1,18 +1,23 @@
-import { intlFormat } from "date-fns";
+import {DateTime} from 'luxon';
 
+/**
+ * @description format ISO date to native
+ * @param {string} date date strint in ISO format
+ * @returns {string} formatted date string
+ */
 function formatDateNative(date) {
-  return intlFormat(new Date(date), 
-    {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    },
-    {
-      locale: 'ru-RU'
-    }
-  );
+  return DateTime.fromISO(date)
+    .setLocale('ru-RU')
+    .toFormat(`dd MMMM${isCurrentYear(date) ? '' : ' yy'}`);
 }
 
-export {
-  formatDateNative,
+/**
+ * @description checks passed date for current year
+ * @param {Date} date date strint in valid Date format
+ * @returns Boolean
+ */
+function isCurrentYear(date) {
+  return new Date().getFullYear() === new Date(date).getFullYear();
 }
+
+export {formatDateNative};
