@@ -1,7 +1,7 @@
 <template>
   <ul class="card-list">
-    <template v-for="(ops, day) in data" :key="day" >
-      <Card :operations="ops" :day="day" />
+    <template v-for="(ops, date) in data" :key="day" >
+      <Card :operations="ops" :date="date" />
     </template>
   </ul>
 </template>

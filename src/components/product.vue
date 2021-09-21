@@ -8,9 +8,9 @@
       />
     </div>
     <div class="product__info">
-      <p class="product__name">{{product['product name']}}</p>
+      <p class="product__name">{{product['product_name']}}</p>
       <p class="product__numbers">
-        <span>{{product.quantity}} штук x {{product.price}}₽</span>
+        <span class="product__qty">{{product.quantity}} штук x {{product.price}}₽</span>
         <span class="product__price">{{total}}₽</span>
       </p>
     </div>

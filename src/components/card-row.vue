@@ -3,7 +3,7 @@
     <div class="row__wrapper">
       <header class="row__header">
         <span class="row__meta"
-          >{{ transaction[0].name + '&nbsp;' }} №{{ id }}</span
+          >{{ transaction[0].doctype + '&nbsp;' }} №{{ id }}</span
         >
         <span class="row__price">{{ calcTotal + '&nbsp;' }} ₽</span>
       </header>
