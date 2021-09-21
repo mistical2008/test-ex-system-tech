@@ -15,7 +15,7 @@
 
 <script>
   import Cards from "./components/card-list.vue";
-  import { formatDateNative } from "./utils/date.js";
+
   export default {
     name: 'App',
     components: {
@@ -39,30 +39,26 @@
         fetch('db.json')
           .then(res => res.json())
           .then(json => {
-            this.setOperations(this.groupByDay(json));
+            this.operations = this.groupByDay(json);
             this.loading = false;
           })
-          // .then(_res => console.log(this.operations, this.loading))
           .catch(err => console.error(err.message));
       },
 
       groupByDay(data) {
-        return data.operations.reduce((prev, curr, _idx, _arr) => {
+        return data
+          .operations
+          .reduce((prev, curr, _idx, _arr) => {
           const {date} = curr;
-          const [day] = date.split(' ');
-          const dayFormated = formatDateNative(new Date(day));
+          const [ day, ] = date.split(' ');
 
-          if(!prev[dayFormated]) {
-            prev[dayFormated] = [];
+          if(!prev[day]) {
+            prev[day] = [];
           }
-          prev[dayFormated].push(curr);
+          prev[day].push(curr);
 
           return prev;
-        }, {});
-      },
-
-      setOperations(data) {
-        this.operations = data;
+        }, {})
       },
     },
   };
